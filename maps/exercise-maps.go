@@ -11,17 +11,11 @@ func WordCount(s string) map[string]int {
 
 	wordCounts := make(map[string]int)
 
-	for i := 0; i < len(words); i++ {
-		_, ok := wordCounts[words[i]]
+	for _, word := range words { // Ranges make this easier to work with
+        wordCounts[word]++ // No need to check if value is ok since Go defaults the value to 0
+    }
 
-		if !ok {
-			wordCounts[words[i]] = 1
-		} else {
-			wordCounts[words[i]] += 1
-		}
-	}
-
-	return wordCounts
+    return wordCounts
 }
 
 func main() {
